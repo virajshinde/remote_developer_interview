@@ -1,0 +1,59 @@
+<%- include("header") -%>
+
+<div id="container" class="container">
+
+<form class="userForm" action="/user" method="POST">
+  <input name="createUser" type="text" placeholder="Create New User">
+  <input name="details" type="text" placeholder="Enter Details">
+  <button type="submit" class ="userAddButton">Go</button>
+
+</form>
+
+<div class="list" class="col-sm-12">
+  <ul>
+
+      <%NewListItem.forEach(function(item){%>
+          <li class="item todoUl row">
+            <div class="row col-6">
+              <div class="name col-12">
+                <%=item.name%>
+              </div>
+              <div class="name col-12">
+                <div class="details">
+                  <%=item.details%>
+                </div>
+                
+              </div>
+            </div>
+            
+            <div>
+              <form action="/delete" method="POST">
+                <input type="hidden" name="currentList" >
+                <button type="submit" name="deleteButton" class ="delButton" value= <%= item._id  %>> X </button>
+            </form>
+            </div>
+            <div>
+              <form action="/updateUser" method="POST">
+                <input type="hidden" name="currentList" >
+                <button type="submit" name="updateButton" class ="updateButton" value= <%= item._id  %>> Update </button>
+            </form>
+            </div>    
+            
+            
+              
+          </li>
+
+      <%})%>
+
+  </ul>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+<%- include("footer") -%>
